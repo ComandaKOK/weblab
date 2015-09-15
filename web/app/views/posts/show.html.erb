@@ -1,0 +1,24 @@
+<%= render 'layouts/header' %>
+
+<div class="row">
+  <div class="col-xs-12  col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+      	<div class="well well-sm">
+			<div class="panel panel-default">
+  				<div class="panel-body">
+    				<h4><%= @post.title %></h4>
+  				</div>
+			</div>
+
+			<div class="panel panel-default">
+  				<div class="panel-body">
+    				<%= @post.text %>
+  				</div>
+			</div>
+
+			<p class="text-right ">
+				<small>
+					<em>Author: <%= @post.author %></em>
+				</small>
+			</p>
+  </div>
+</div>
