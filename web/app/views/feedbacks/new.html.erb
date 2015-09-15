@@ -1,0 +1,22 @@
+<%= render 'layouts/header' %>
+<div class="row">
+  <div class="col-xs-12  col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+		  <p><h3>Leave feedback</h3></p>
+		</div>
+  		<div class="panel-body">
+		    <%= form_for(@feed) do |f| %>
+		            <p>      <%= render 'layouts/errors_add_feedback' %>     </p>
+
+		            <p><%= f.text_field :author,   class: "form-control", placeholder: "Author"%>                    </p>   
+		            <p><%= f.text_field :email,    class: "form-control", placeholder: "email"%>                   </p>  
+		            <p><%= f.text_area  :text, 	   class: "form-control", placeholder: "Text"%>              </p>    
+
+		            <p><%= f.submit "Add Post", class: "btn btn-large btn-primary" %>                                </p>
+		    <% end %>
+  		</div>
+	</div>
+  </div>
+</div>
+<%= render 'layouts/footer' %>

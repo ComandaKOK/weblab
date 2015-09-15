@@ -1,0 +1,10 @@
+<% if @feed.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      The form contains <%= pluralize(@feed.errors.count, "error") %>.
+      <ul>
+          <% @feed.errors.full_messages.each do |msg| %>
+          <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+    </div>
+<% end %>

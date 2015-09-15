@@ -1,0 +1,39 @@
+<%= render 'layouts/header' %>
+
+<div class="row">
+	<div class="col-xs-12  col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+		<% if @feed != nil %>
+			<% @feed.each do |message| %>
+				<div class="panel panel-default">
+
+					<div class="panel-heading">
+						<h5>Author: <b><%= message.author %></b>, <%= message.email %></h5>
+					</div>
+
+					<div class="panel-body">
+						<%= message.text %>
+					</div>
+
+					<div class="panel-footer">
+						<p class="text-right"><%= time_ago_in_words(message.created_at) %></p>
+					</div>
+
+				</div>
+			<% end %>
+		<% else %>
+			<div class="panel panel-default">
+
+				<div class="panel-heading">
+					<p><h3>No feedback</h3></p>
+				</div>
+
+				<div class="panel-body">
+					There are no users feedback yet!
+				</div>
+
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<%= render 'layouts/footer' %>
