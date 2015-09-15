@@ -1,12 +1,23 @@
 Rails.application.routes.draw do
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :posts
+  resources :feedbacks
 
-  root 'posts#new'
+  
 
-  match '/addnews',      to: 'posts#new',    via: 'get'
-  match '/allnews',      to: 'posts#index',  via: 'get'    
+  match '/addnews',       to: 'posts#new',            via: 'get'
+  match '/allnews',       to: 'posts#index',          via: 'get'  
+
+  match '/leavefeedback', to: 'feedbacks#new',        via: 'get' 
+  match '/allfeedback',   to: 'feedbacks#index',      via: 'get'
+
+
+
+  root 'posts#index'
+  
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
