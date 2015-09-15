@@ -6,7 +6,7 @@
 		  <p><h3>Leave feedback</h3></p>
 		</div>
   		<div class="panel-body">
-		    <%= form_for(@feed) do |f| %>
+		    <%= form_for(@feedback) do |f| %>
 		            <p>      <%= render 'layouts/errors_add_feedback' %>     </p>
 
 		            <p><%= f.text_field :author,   class: "form-control", placeholder: "Author"%>                    </p>   

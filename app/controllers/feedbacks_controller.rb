@@ -1,15 +1,15 @@
 class FeedbacksController < ApplicationController
   def new
-  	@feed = Feedback.new()
+  	@feedback = Feedback.new()
   end
 
   def index
-  	@feed = Feedback.all
+  	@feedback = Feedback.all
   end
 
   def create
-  	@feed = Feedback.new(feed_params)
-  	if @feed.save
+  	@feedback = Feedback.new(feedback_params)
+  	if @feedback.save
   		redirect_to allnews_path
   		flash[:success] = "Feedback recived! Thank you!"
   	else
@@ -18,10 +18,12 @@ class FeedbacksController < ApplicationController
   end
 
   def show
-  	@feed = Feedback.find(params[:id])
+  	@feedback = Feedback.find(params[:id])
   end
 
-  private def feed_params
+  private
+
+  def feedback_params
   	params.require(:feedback).permit(:author, :email, :text)
   end
 end
