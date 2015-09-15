@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: lab_production
-  username: web
-  password: <%= ENV['WEB_DATABASE_PASSWORD'] %>
+  username: pguser
+  password: pguser
