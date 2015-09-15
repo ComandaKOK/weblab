@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	def new
-		@post = Post.new
+		@post = Post.new()
 	end
 
 	def show
@@ -22,7 +22,9 @@ class PostsController < ApplicationController
 		@post = Post.paginate(page: params[:page], per_page: 20)
 	end
 
-	private def params_req
+	private
+
+	def params_req
 		 params.require(:post).permit(:title, :text, :author)
 	end
 end
