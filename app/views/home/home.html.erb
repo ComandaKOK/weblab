@@ -1,0 +1,36 @@
+<%= render 'layouts/header' %>
+<div class="row">
+  <div class="col-xs-12  col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+
+  	<div class="well">
+  	<%= image_tag "http://joinfo.ua/images/catalog/smi/logo/logo_9a60094a1fa37d1c8b8a59778d06ca57.png", class: "img-rounded img-responsive"  %>
+  	</div>
+
+  <% @news.each do |item| %>
+	<div class="panel panel-default">
+  		<div class="panel-body">
+
+			<div class="media">
+
+			  <div class="media-left media-small">
+			      <%= image_tag item.image, class: "img-rounded img-responsive", size: "100x100" %>
+			  </div>
+
+			  <div class="media-body">
+			    <h4 class="media-heading"><%= item.title %>.</h4>
+			  </div>
+
+			</div>
+
+  		</div>
+
+  		<div class="panel-footer">
+  			<%= button_to "More information", item.url, class: "btn btn-info", method: :get %>
+  		</div>
+
+  	</div>
+  <% end %>
+  </div>
+</div>
+
+<%= render 'layouts/footer' %>

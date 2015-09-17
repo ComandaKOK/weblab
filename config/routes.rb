@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :posts
   resources :feedbacks
+  resources :home
 
-  
+  root 'home#home'
 
   match '/addnews',       to: 'posts#new',            via: 'get'
   match '/allnews',       to: 'posts#index',          via: 'get'  
@@ -14,9 +15,7 @@ Rails.application.routes.draw do
   match '/leavefeedback', to: 'feedbacks#new',        via: 'get' 
   match '/allfeedback',   to: 'feedbacks#index',      via: 'get'
 
-
-
-  root 'posts#index'
+  match '/home',          to: 'home#home',            via: 'get'
   
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
