@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   match '/allfeedback',   to: 'feedbacks#index',      via: 'get'
 
   match '/home',          to: 'home#home',            via: 'get'
+  match '/cookies',       to: 'home#cookies',         via: 'get'
+  match '/rules',         to: 'home#rules',           via: 'get'
   
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
