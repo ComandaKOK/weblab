@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.new(params_req)
 		if @post.save
-			flash[:success] = "Post Added!"
+			flash[:success] = "Post Added! Thank, dear #{@post.author}!"
 			redirect_to @post
 		else
 			flash[:warning] = "Some errors were occured..."
@@ -25,6 +25,6 @@ class PostsController < ApplicationController
 	private
 
 	def params_req
-		 params.require(:post).permit(:title, :text, :author)
+		 params.require(:post).permit(:title, :text, :author, :image)
 	end
 end
