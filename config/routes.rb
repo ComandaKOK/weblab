@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   match '/cookies',       to: 'home#cookies',         via: 'get'
   match '/rules',         to: 'home#rules',           via: 'get'
   
+  # Adding custom routes errors
+
+  match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

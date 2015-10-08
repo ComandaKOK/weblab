@@ -1,10 +1,14 @@
 class PostsController < ApplicationController
+	def not_found
+		raise ActionController::RoutingError.new('Not Found')
+	end
+
 	def new
 		@post = Post.new()
 	end
 
 	def show
-		@post = Post.find(params[:id])
+		@post = Post.find_by_id(params[:id]) or not_found
 	end
 
 	def create
