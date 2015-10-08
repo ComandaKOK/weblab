@@ -1,24 +1,25 @@
 <%= render 'layouts/header' %>
 
 <div class="row">
-  <div class="col-xs-12  col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
-    <%= form_for(@post) do |f| %>
-
-      	<div class="well well-sm">
-            <p><h3>Add News</h3></p>
-
-            <p>      <%= render 'layouts/errors_add_news' %>     </p>
-
-            <p><%= f.text_field :title,     class: "form-control", placeholder: "Title"%>                    </p>   
-            <p><%= f.text_field :author,    class: "form-control", placeholder: "Author"%>                   </p>  
-            <p><%= f.text_field :image,     class: "form-control", placeholder: "Image URL"%>                </p> 
-            <p><%= f.text_area  :text, 		  class: "form-control", placeholder: "Text"%>                     </p>    
-
-            <p><%= f.submit "Add Post", class: "btn btn-large btn-primary" %>                                </p>
-
-		    </div>
-    <% end %>
+  <div class="col s8 offset-s2">
+    <div class="card">
+      <div class="card-image">
+            <%= image_tag("paper/1.jpg")%>
+            <span class="card-title grey-text text-darken-4">Adding some news</span>       
+      </div>
+            <div class="card-content">
+            
+        <%= form_for(@post) do |f| %>
+                <p>      <%= render 'layouts/errors_add_news' %>     </p>
+                <p><%= f.text_field :title,     class: "form-control", placeholder: "Title"%>                    </p>   
+                <p><%= f.text_field :author,    class: "form-control", placeholder: "Author"%>                   </p>  
+                <p><%= f.text_field :image,     class: "form-control", placeholder: "Image URL"%>                </p> 
+                <p><%= f.text_area  :text,      class: "form-control", placeholder: "Text"%>                     </p>    
+            </div>
+        <div class="card-action">
+              <%= f.submit "Add Post", class: "btn btn-large purple lighten-2" %>
+            </div>
+        <% end %>       
+    </div>
   </div>
 </div>
-
-<%= render 'layouts/footer'%>

@@ -1,30 +1,14 @@
 <%= render 'layouts/header' %>
 
 <div class="row">
-  	<div class="col-xs-12  col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-      	<div class="well well-sm">
-			<div class="panel panel-default">
-  				<div class="panel-body">
-    				<h4><%= @post.title %></h4>
-  				</div>
-			</div>
+ <div class="col s6 offset-s3">
+    	<h4><%= @post.title %></h4>
+  			<p><%= image_tag @post.image, class: 'responsive-img' %></p>
+    		<p><%= @post.text %></p>
 
-			<div class="panel panel-default">
-  				<div class="panel-body">
-  					<% if @post.image != nil %>
-  						<p><%= image_tag @post.image, class: 'img-rounded img-responsive' %></p>
-  					<% end %>
-
-    				<p><%= @post.text %></p>
-  				</div>
-			</div>
-
-			<p class="text-right ">
 				<small>
 					<em>Author: <%= @post.author %></em>
 				</small>
-			</p>
+
   </div>
 </div>
-
-<%= render 'layouts/footer'%>

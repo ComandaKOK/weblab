@@ -1,39 +1,27 @@
 <%= render 'layouts/header' %>
 
 <div class="row">
-	<div class="col-xs-12  col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
-		<% if @feedback != nil %>
-			<% @feedback.each do |message| %>
-				<div class="panel panel-default">
+	<div class="col s10 offset-s1">
+		<table>
+		    <thead>
+		          <tr>
+		              <th data-field="author">Author</th>
+		              <th data-field="email">email</th>
+		              <th data-field="message">Message</th>
+		              <th data-field="time">Message</th>
+		          </tr>
+		    </thead>
 
-					<div class="panel-heading">
-						<h5>Author: <b><%= message.author %></b>, <%= message.email %></h5>
-					</div>
-
-					<div class="panel-body">
-						<%= message.text %>
-					</div>
-
-					<div class="panel-footer">
-						<p class="text-right"><%= time_ago_in_words(message.created_at) %></p>
-					</div>
-
-				</div>
-			<% end %>
-		<% else %>
-			<div class="panel panel-default">
-
-				<div class="panel-heading">
-					<p><h3>No feedback</h3></p>
-				</div>
-
-				<div class="panel-body">
-					There are no users feedback yet!
-				</div>
-
-			</div>
-		<% end %>
+		    <tbody>
+		    	<% @feedback.each do |message| %>
+		          <tr>
+		            <td><%= message.author %></td>
+		            <td><%= message.email %></td>
+		            <td><%= message.text %></td>
+		            <td><%= time_ago_in_words(message.created_at) %></td>
+		          </tr>
+		        <% end %>
+		    <tbody>
+		</table>
 	</div>
 </div>
-
-<%= render 'layouts/footer' %>

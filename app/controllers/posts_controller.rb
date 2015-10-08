@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@post = Post.paginate(page: params[:page], per_page: 20)
+		@post = Post.paginate(:page => params[:page])
 	end
 
 	private

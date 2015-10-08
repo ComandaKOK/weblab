@@ -31,7 +31,7 @@ gem 'feedjira'
 gem 'pg', '0.15.1'
 gem 'rails_12factor', '0.0.2'
 
-gem 'bootstrap-sass', '~> 3.3.5'
+gem 'materialize-sass'
 gem 'bootstrap-will_paginate', '0.0.9'
 # Use Unicorn as the app server
 # gem 'unicorn'
