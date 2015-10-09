@@ -4,7 +4,7 @@ class FeedbacksController < ApplicationController
   end
 
   def index
-  	@feedback = Feedback.all
+    @feedback = Feedback.paginate(:page => params[:page], :per_page => 5)
   end
 
   def create
