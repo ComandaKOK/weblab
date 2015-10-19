@@ -1,2 +1,30 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<%= render "/layouts/header" %>
+
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card-panel">
+          <h1>Hello, @user!</h1>
+          <h5>After registration you'll have access to new places</h5>
+
+          <%= form_for(@user) do |f| %>
+            <%= render 'layouts/errors_user_create' %>
+            <p>
+              <%= f.text_field :name, placeholder: "Your name" %>
+            </p>
+            <p>
+              <%= f.text_field :email, placeholder: "email" %>
+            </p>
+            <p>
+              <%= f.password_field :password, placeholder: "Password" %>
+            </p>
+            <p>
+              <%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
+            </p>
+            <%= f.submit "Create my account", class: "btn btn-large purple lighten-2" %>
+          <% end %>  
+    </div>
+  </div>
+</div>
+
+
+

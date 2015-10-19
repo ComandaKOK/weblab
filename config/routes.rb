@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
 
-  get 'users/new'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :posts
   resources :feedbacks
   resources :home
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   root 'home#home'
 
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   match '/cookies',       to: 'home#cookies',         via: 'get'
   match '/rules',         to: 'home#rules',           via: 'get'
   
+  match '/signup',        to: 'users#new',            via: 'get'
+    match '/signin',      to: 'sessions#new',         via: 'get'
+  match '/signout',       to: 'sessions#destroy',     via: 'delete'
   # Adding custom routes errors
 
   match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
