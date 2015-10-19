@@ -33,6 +33,7 @@ gem 'rails_12factor', '0.0.2'
 
 gem 'materialize-sass'
 gem 'bootstrap-will_paginate', '0.0.9'
+gem 'bcrypt-ruby', '3.1.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
