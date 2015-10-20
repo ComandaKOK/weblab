@@ -1,2 +1,24 @@
-<% provide(:title, @user.name) %>
-<%= @user.name %>, <%= @user.email %>
+<%= render "layouts/header" %>
+
+<div class="row">
+	<div class="col s6 offset-s3">
+		<div class="userbox">
+			<p>
+				<%= image_tag "user/user.png", class: "responsive-img circle", size: "400x400"  %>
+			</p>
+			<p>
+				<h2>Hi, @user!</h2>
+			</p>
+			<span class="userdescription">
+				@user:  <%= @user.name %>, </br>
+				@email: <%= @user.email %>
+			</span>
+			<p>
+	      		<%= link_to "Settings", edit_user_path(current_user) %>
+	      	</p>
+		</div>
+	</div>
+</div>
+
+
+

@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   match '/rules',         to: 'home#rules',           via: 'get'
   
   match '/signup',        to: 'users#new',            via: 'get'
-    match '/signin',      to: 'sessions#new',         via: 'get'
+  match '/allusers',      to: 'users#index',          via: 'get'
+
+  match '/signin',        to: 'sessions#new',         via: 'get'
   match '/signout',       to: 'sessions#destroy',     via: 'delete'
   # Adding custom routes errors
 
