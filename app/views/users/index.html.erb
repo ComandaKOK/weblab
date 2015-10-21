@@ -9,18 +9,25 @@
 		              <th data-field="author">Name</th>
 		              <th data-field="email">email</th>
 		              <th data-field="registred">Registred</th>
+		              <% if current_user.admin? %>
+    				  <th data-field="delete">Kill @user</th>		
+ 					  <% end %>
 		          </tr>
 		    </thead>
 
 		    <tbody>
 		    	<% @user.each do |current| %>
 		          <tr>
-		            <td><%= current.name %></td>
+		            <td><%= link_to current.name, current %></td>
 		            <td><%= current.email %></td>
 		            <td><%= time_ago_in_words(current.created_at) %></td>
+		            <% if current_user.admin? %>
+    					<td><%= link_to "delete", current, method: :delete, data: { confirm: "You sure?" } %></td>
+ 					<% end %>
 		          </tr>
 		        <% end %>
 		    <tbody>
 		</table>
 	</div>
 </div>
+

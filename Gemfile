@@ -36,7 +36,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'bcrypt-ruby', '3.1.2'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'faker', '1.1.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

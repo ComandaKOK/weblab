@@ -4,15 +4,20 @@
 	<div class="col s6 offset-s3">
 		<div class="userbox">
 			<p>
-				<%= image_tag "user/user.png", class: "responsive-img circle", size: "400x400"  %>
+				<%= image_tag "user/user.png", class: "responsive-img circle", size: "500x500"  %>
 			</p>
 			<p>
-				<h2>Hi, @user!</h2>
+
+				<span class="userdescription">
+					<% if current_user.admin? %>
+	    				<h2>Hi, @admin!</h2>
+	    			<% else %>
+	    				<h2>Hi, @user!</h2>
+	 				<% end %>
+					@user:  <%= @user.name %>, </br>
+					@email: <%= @user.email %>
+				</span>
 			</p>
-			<span class="userdescription">
-				@user:  <%= @user.name %>, </br>
-				@email: <%= @user.email %>
-			</span>
 			<p>
 	      		<%= link_to "Settings", edit_user_path(current_user) %>
 	      	</p>

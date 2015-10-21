@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update]
+  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
 
   def show
@@ -36,6 +36,12 @@ class UsersController < ApplicationController
       @error = "Oops, something wrong!"
       render 'edit'
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to :back
+#    redirect_to users_url
   end
 
 private
