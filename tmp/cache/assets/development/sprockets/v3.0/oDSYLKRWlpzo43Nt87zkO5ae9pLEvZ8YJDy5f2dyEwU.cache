@@ -1,0 +1,9 @@
+I"‰(function() {
+  jQuery(function() {
+    return $('#users').dataTable({
+      sPaginateType: "full_numbers"
+    });
+  });
+
+}).call(this);
+:ET

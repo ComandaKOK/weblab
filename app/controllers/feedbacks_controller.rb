@@ -4,14 +4,13 @@ class FeedbacksController < ApplicationController
   end
 
   def index
-    @feedback = Feedback.paginate(:page => params[:page], :per_page => 5)
+    @feedback = Feedback.all
   end
 
   def create
   	@feedback = Feedback.new(feedback_params)
   	if @feedback.save
   		redirect_to allnews_path
-  		flash[:success] = "Feedback recived! Thank you, #{@feedback.author}!"
   	else
   		render 'new'
   	end
@@ -19,6 +18,26 @@ class FeedbacksController < ApplicationController
 
   def show
   	@feedback = Feedback.find(params[:id])
+  end
+
+  def edit
+    @feedback = Feedback.find(params[:id])
+  end
+
+  def update
+    @feedback = Feedback.find(params[:id])
+    @feedback.adminview = true
+    if @feedback.update_attributes(feedback_params)
+      redirect_to root_path
+    else
+      @error = "Oops, something wrong!"
+      render 'edit'
+    end
+  end
+
+  def destroy
+    Feedback.find(params[:id]).destroy
+    redirect_to :back
   end
 
   private

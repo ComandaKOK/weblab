@@ -1,0 +1,7 @@
+I"f(function() {
+  jQuery(function() {
+    return $('#feedback').dataTable();
+  });
+
+}).call(this);
+:ET

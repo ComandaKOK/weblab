@@ -7,20 +7,22 @@
 				<%= image_tag "user/user.png", class: "responsive-img circle", size: "500x500"  %>
 			</p>
 			<p>
-
-				<span class="userdescription">
-					<% if current_user.admin? %>
-	    				<h2>Hi, @admin!</h2>
-	    			<% else %>
-	    				<h2>Hi, @user!</h2>
-	 				<% end %>
-					@user:  <%= @user.name %>, </br>
-					@email: <%= @user.email %>
-				</span>
-			</p>
-			<p>
-	      		<%= link_to "Settings", edit_user_path(current_user) %>
-	      	</p>
+			<div class="card-panel">
+					<span class="userdescription">
+						<% if current_user.admin? %>
+		    				<h2>Hi, @admin!</h2>
+		    				@feedback: <%= link_to 'feed', allfeedback_path %></br>
+		    			<% else %>
+		    				<h2>Hi, @user!</h2>
+		 				<% end %>
+						@user:  <%= @user.name %>, </br>
+						@email: <%= @user.email %>
+					</span>
+				</p>
+				<p>
+					<%= button_to "Settings", edit_user_path(current_user), :class => "btn btn-large purple lighten-2", :method => :get  %>
+		      	</p>
+	      	</div>
 		</div>
 	</div>
 </div>

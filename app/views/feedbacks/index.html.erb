@@ -1,15 +1,18 @@
 <%= render 'layouts/header' %>
 
-<%= will_paginate @feedback %>
 <div class="row">
 	<div class="col s10 offset-s1">
-		<table>
+		<table id="feedback">
 		    <thead>
 		          <tr>
 		              <th data-field="author">Author</th>
 		              <th data-field="email">email</th>
 		              <th data-field="message">Message</th>
-		              <th data-field="time">Message</th>
+		              <th data-field="time">Submited</th>
+		              <% if current_user.admin? %>
+			              <th data-field="vieewed">Viewed</th>
+	    				  <th data-field="delete">Delete</th>		
+ 					  <% end %>
 		          </tr>
 		    </thead>
 
@@ -20,6 +23,18 @@
 		            <td><%= message.email %></td>
 		            <td><%= message.text %></td>
 		            <td><%= time_ago_in_words(message.created_at) %></td>
+		            <% if current_user.admin? %>
+
+		            	<td>
+		            		<% if message.adminview? %>
+		            			<%= link_to 'Yes', edit_feedback_path(message) %>
+		            		<% else %>
+		            			<%= link_to 'Yes', edit_feedback_path(message) %>
+		            		<% end %>
+		            	</td>
+    					<td><%= link_to "delete", message, method: :delete, data: { confirm: "You sure?" } %></td>
+
+ 					<% end %>
 		          </tr>
 		        <% end %>
 		    <tbody>
