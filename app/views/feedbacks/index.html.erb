@@ -29,7 +29,7 @@
 		            		<% if message.adminview? %>
 		            			<%= link_to 'Yes', edit_feedback_path(message) %>
 		            		<% else %>
-		            			<%= link_to 'Yes', edit_feedback_path(message) %>
+		            			<%= link_to 'No', edit_feedback_path(message) %>
 		            		<% end %>
 		            	</td>
     					<td><%= link_to "delete", message, method: :delete, data: { confirm: "You sure?" } %></td>
