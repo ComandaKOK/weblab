@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   root 'home#home'
 
   match '/addnews',       to: 'posts#new',            via: 'get'
-  match '/allnews',       to: 'posts#index',          via: 'get'  
+  match '/allnews',       to: 'posts#index',          via: 'get' 
+  match '/admincontrol',  to: 'posts#admincontrol',   via: 'get' 
 
   match '/leavefeedback', to: 'feedbacks#new',        via: 'get' 
   match '/allfeedback',   to: 'feedbacks#index',      via: 'get'

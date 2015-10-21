@@ -7,6 +7,10 @@ class PostsController < ApplicationController
 		@post = Post.new()
 	end
 
+	def admincontrol
+		@post = Post.paginate(:page => params[:page], :per_page => 2)
+	end
+
 	def show
 		@post = Post.find_by_id(params[:id]) or not_found
 	end
