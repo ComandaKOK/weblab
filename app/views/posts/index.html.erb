@@ -8,7 +8,7 @@
     <% @post.each do |record| %>
       <div class="card">
         <div class="card-image">
-          <%= image_tag record.image %>
+          <%= image_tag record.image, height: "auto", width: "640"  %>
         </div>
 
         <div class="card-content">
