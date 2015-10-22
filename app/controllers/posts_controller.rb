@@ -26,12 +26,16 @@ class PostsController < ApplicationController
 
 	def edit
     	@post = Post.find(params[:id])
+  	end  	
+
+  	def admin
+    	@post = Post.all
   	end
 
     def update
     	@post = Post.find(params[:id])
     	if @post.update_attributes(params_req)
-      		redirect_to @post
+      		redirect_to allposts_path
     	else
      		@error = "Oops, something wrong!"
       		render 'edit'
@@ -40,11 +44,16 @@ class PostsController < ApplicationController
 
 	def index
 		@post = Post.paginate(:page => params[:page], :per_page => 5)
-	end
+	end	
+
+	def destroy
+    	Post.find(params[:id]).destroy
+   		redirect_to :back
+  	end
 
 	private
 
 	def params_req
-		 params.require(:post).permit(:title, :text, :author, :image)
+		 params.require(:post).permit(:title, :text, :author, :image, :security, :visibility)
 	end
 end

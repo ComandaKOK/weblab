@@ -12,9 +12,10 @@
 						<% if current_user.admin? %>
 		    				<h2>Hi, @admin!</h2>
 		    				@allfeedback: <%= link_to 'feed', allfeedback_path %></br>
+		    				@allposts: <%= link_to 'posts', allposts_path %></br>
 		    			<% else %>
 		    				<h2>Hi, @user!</h2>
-		    				@feedback: <%= link_to 'feed', feedlist_path %></br>
+		    				@feedback: <%= link_to 'feed',  feedlist_path %></br>
 		 				<% end %>
 						@user:  <%= @user.name %>, </br>
 						@email: <%= @user.email %>
