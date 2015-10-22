@@ -15,7 +15,7 @@
                   Original: <%= @feedback.text %>
                   Only <em>Administrator</em> can edit!
                 <% else %>
-                  <p><%= f.text_area  :text,   class: "form-control", placeholder: "Text"%></p>
+                  <p><%= f.text_area  :text,          class: "form-control", placeholder: "Text"        %></p>
                   <p><%= f.text_area  :adminanswer,   class: "form-control", placeholder: "Admin answer"%></p>
                   <%= f.submit "Answer", class: "btn btn-large purple lighten-2" %>
               <% end %>

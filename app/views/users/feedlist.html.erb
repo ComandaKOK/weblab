@@ -1,0 +1,36 @@
+<%= render "layouts/header" %>
+
+<div class="row">
+	<div class="col s10 offset-s1">
+		<table id="feedback_user">
+		    <thead>
+		          <tr>
+
+		              <th data-field="message">Message</th>
+		              <th data-field="time">Submited</th>
+			          <th data-field="vieewed">Viewed</th>
+			          <th data-field="answer">Answer</th>
+	    			  <th data-field="delete">Delete</th>		
+		          </tr>
+		    </thead>
+
+		    <tbody>
+		    	<% @feed.each do |message| %>
+		          <tr>
+		            <td><%= message.text %></td>
+		            <td><%= time_ago_in_words(message.created_at) %></td>
+
+		            <% if message.adminview? %>
+		            	<td>Yes, <%= time_ago_in_words(message.updated_at)%> ago</td>
+						<td><%= message.adminanswer %></td>
+		            <% else %>
+		            	<td>Not yet</td>
+		            	<td>Has no answer!</td>
+		            <% end %>
+    				<td><%= link_to "delete", message, method: :delete, data: { confirm: "You sure?" } %></td>
+		          </tr>
+		        <% end %>
+		    <tbody>
+		</table>
+	</div>
+</div>

@@ -6,4 +6,5 @@ class Feedback < ActiveRecord::Base
   validates :author,  	presence: true,   length: { maximum: 20 }
   validates :email, 	presence: true,   format: { with: VALID_EMAIL_REGEX }
   validates :text,  	presence: true
+  validates :adminanswer,  	presence: true
 end

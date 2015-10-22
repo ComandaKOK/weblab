@@ -8,7 +8,7 @@
     <% @post.each do |record| %>
       <div class="card">
         <div class="card-image">
-          <%= image_tag record.image, height: "auto", width: "640"  %>
+          <%= image_tag record.image,  size: "640x480" %>
         </div>
 
         <div class="card-content">
@@ -23,14 +23,8 @@
       <% end %>
   </div>
 </div>
-<% else %>
-
-<div class="section white">
-    <div class="row container">
-      Oops, there is no post yet!
-    </div>
-</div>
-
 <% end %>
 
-<%= will_paginate @post %>
+<div class="row">
+    <%= will_paginate @post %>
+</div>

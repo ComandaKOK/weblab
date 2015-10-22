@@ -38,6 +38,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def feedlist
+    @feed = Feedback.where(author: current_user.name)
+  end
+
   def destroy
     User.find(params[:id]).destroy
     redirect_to :back

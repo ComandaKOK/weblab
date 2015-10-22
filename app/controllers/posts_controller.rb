@@ -7,27 +7,39 @@ class PostsController < ApplicationController
 		@post = Post.new()
 	end
 
-	def admincontrol
-		@post = Post.paginate(:page => params[:page], :per_page => 2)
-	end
-
 	def show
 		@post = Post.find_by_id(params[:id]) or not_found
 	end
 
 	def create
 		@post = Post.new(params_req)
+		if signed_in?
+			@post.author = current_user.name
+		end
+
 		if @post.save
-			flash[:success] = "Post Added! Thank, dear #{@post.author}!"
 			redirect_to @post
 		else
-			flash[:warning] = "Some errors were occured..."
 			render "new"
 		end
 	end
 
+	def edit
+    	@post = Post.find(params[:id])
+  	end
+
+    def update
+    	@post = Post.find(params[:id])
+    	if @post.update_attributes(params_req)
+      		redirect_to @post
+    	else
+     		@error = "Oops, something wrong!"
+      		render 'edit'
+   		end
+  	end
+
 	def index
-		@post = Post.paginate(:page => params[:page], :per_page => 2)
+		@post = Post.paginate(:page => params[:page], :per_page => 5)
 	end
 
 	private

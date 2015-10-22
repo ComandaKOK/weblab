@@ -11,9 +11,10 @@
 					<span class="userdescription">
 						<% if current_user.admin? %>
 		    				<h2>Hi, @admin!</h2>
-		    				@feedback: <%= link_to 'feed', allfeedback_path %></br>
+		    				@allfeedback: <%= link_to 'feed', allfeedback_path %></br>
 		    			<% else %>
 		    				<h2>Hi, @user!</h2>
+		    				@feedback: <%= link_to 'feed', feedlist_path %></br>
 		 				<% end %>
 						@user:  <%= @user.name %>, </br>
 						@email: <%= @user.email %>

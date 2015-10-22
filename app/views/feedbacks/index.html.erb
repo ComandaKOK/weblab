@@ -1,43 +1,50 @@
 <%= render 'layouts/header' %>
 
-<div class="row">
-	<div class="col s10 offset-s1">
-		<table id="feedback">
-		    <thead>
-		          <tr>
-		              <th data-field="author">Author</th>
-		              <th data-field="email">email</th>
-		              <th data-field="message">Message</th>
-		              <th data-field="time">Submited</th>
-		              <% if current_user.admin? %>
-			              <th data-field="vieewed">Viewed</th>
-	    				  <th data-field="delete">Delete</th>		
- 					  <% end %>
-		          </tr>
-		    </thead>
+<% if signed_in? %>
+	<div class="row">
+		<div class="col s10 offset-s1">
+			<table id="feedback">
+			    <thead>
+			          <tr>
+			              <th data-field="author">Author</th>
+			              <th data-field="email">email</th>
+			              <th data-field="message">Message</th>
+			              <th data-field="time">Submited</th>
+			              <% if current_user.admin? %>
+				              <th data-field="vieewed">Viewed</th>
+		    				  <th data-field="delete">Delete</th>		
+	 					  <% end %>
+			          </tr>
+			    </thead>
 
-		    <tbody>
-		    	<% @feedback.each do |message| %>
-		          <tr>
-		            <td><%= message.author %></td>
-		            <td><%= message.email %></td>
-		            <td><%= message.text %></td>
-		            <td><%= time_ago_in_words(message.created_at) %></td>
-		            <% if current_user.admin? %>
+			    <tbody>
+			    	<% @feedback.each do |message| %>
+			          <tr>
+			            <td><%= message.author %></td>
+			            <td><%= message.email %></td>
+			            <td><%= message.text %></td>
+			            <td><%= time_ago_in_words(message.created_at) %></td>
+			            <% if current_user.admin? %>
 
-		            	<td>
-		            		<% if message.adminview? %>
-		            			<%= link_to 'Yes', edit_feedback_path(message) %>
-		            		<% else %>
-		            			<%= link_to 'No', edit_feedback_path(message) %>
-		            		<% end %>
-		            	</td>
-    					<td><%= link_to "delete", message, method: :delete, data: { confirm: "You sure?" } %></td>
+			            	<td>
+			            		<% if message.adminview? %>
+			            			<%= link_to 'Yes', edit_feedback_path(message) %>
+			            		<% else %>
+			            			<%= link_to 'No', edit_feedback_path(message) %>
+			            		<% end %>
+			            	</td>
+	    					<td><%= link_to "delete", message, method: :delete, data: { confirm: "You sure?" } %></td>
 
- 					<% end %>
-		          </tr>
-		        <% end %>
-		    <tbody>
-		</table>
+	 					<% end %>
+			          </tr>
+			        <% end %>
+			    <tbody>
+			</table>
+		</div>
 	</div>
-</div>
+<% else %>
+	<p>
+		<h3>You not authorised to be there!</h3>
+		<h4>Login first to see feedback!</h4> 
+	</p>
+<% end %>

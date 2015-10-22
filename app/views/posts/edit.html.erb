@@ -1,21 +1,16 @@
-<%= render 'layouts/header' %>
+<%= render "layouts/header" %>
 
 <div class="row">
   <div class="col s8 offset-s2">
     <div class="card">
       <div class="card-image">
-            <%= image_tag("paper/1.jpg")%>
-            <span class="card-title grey-text text-darken-4">Adding some news</span>       
+            <%= image_tag "paper/edit.jpg", class: "img-responsive"%>
+            <span class="card-title white-text">Editing post</span>       
       </div>
             <div class="card-content">
             
         <%= form_for(@post) do |f| %>
                 <p>      <%= render 'layouts/errors_add_news' %>     </p>
-
-                <% if !signed_in? %>
-                  <p><%= f.text_field :author,    class: "form-control", placeholder: "Author"%>                   </p>  
-                <% end %>
-                
                 <p><%= f.text_field :title,     class: "form-control", placeholder: "Title"%>                    </p>   
                 <p><%= f.text_field :image,     class: "form-control", placeholder: "Image URL"%>                </p> 
                 <p><%= f.text_area  :text,      class: "form-control", placeholder: "Text"%>                     </p>    

@@ -8,7 +8,13 @@ class FeedbacksController < ApplicationController
   end
 
   def create
-  	@feedback = Feedback.new(feedback_params)
+    @feedback = Feedback.new(feedback_params)
+    @feedback.adminanswer = "No answer"
+    if signed_in?
+      @feedback.author = current_user.name
+      @feedback.email  = current_user.email
+    end  
+
   	if @feedback.save
   		redirect_to allnews_path
   	else
@@ -43,6 +49,6 @@ class FeedbacksController < ApplicationController
   private
 
   def feedback_params
-  	params.require(:feedback).permit(:author, :email, :text)
+  	params.require(:feedback).permit(:author, :email, :text, :adminanswer)
   end
 end
