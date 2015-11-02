@@ -3,4 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery -> $('#users').dataTable()
+jQuery -> $('#userposts').dataTable()
 jQuery -> $('#feedback_user').dataTable()

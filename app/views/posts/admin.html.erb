@@ -13,6 +13,7 @@
 			              <% if current_user.admin? %>
 				              <th data-field="visibility">Visibility</th>
 		    				  <th data-field="security">Security</th>
+		    				  <th data-field="security">Save</th>
 		    				  <th data-field="edit">Edit</th>
 		    				  <th data-field="delete">Delete</th>		
 	 					  <% end %>
@@ -29,20 +30,26 @@
 			            <td><%= time_ago_in_words(message.created_at)%> ago</td>
 
 			            <% if current_user.admin? %>
-			            	<td>
-			            		<% if message.visibility == true %>
-			            			Showed
-			            		<% else %>
-			            			Hiden
-			            		<% end %>
-							</td>
-			            	<td>
-			            		<% if message.security == 1%>
-			            			For all
-			            		<% else %>
-			            			Users only
-			            		<% end %>
-			            	</td>
+			         		<%= form_for(message) do |f| %>
+				            	<td>
+						                <%= f.select :visibility, [
+						                                          ["Show", true], 
+						                                          ["Hide", false]
+						                                          ], {}, {class: "browser-default"} %>
+								</td>
+
+			            		<td>
+					                    <%= f.select :security, [
+						                                          ["All", 1], 
+						                                          ["Users", 2]
+						                                          ], {}, {class: "browser-default"} %>
+			            		</td>
+
+			            		<td>
+			            				<%= f.submit "Save"%>
+			            		</td>
+			            	<% end %>
+
 			            	<td><%= link_to "Edit", edit_post_path(message) %></td>
 	    					<td><%= link_to "Delete", message, method: :delete, data: { confirm: "You sure?" } %></td>
 
@@ -59,3 +66,7 @@
 		<h4>Login first to see feedback!</h4> 
 	</p>
 <% end %>
+
+
+
+

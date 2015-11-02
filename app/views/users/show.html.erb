@@ -16,6 +16,7 @@
 		    			<% else %>
 		    				<h2>Hi, @user!</h2>
 		    				@feedback: <%= link_to 'feed',  feedlist_path %></br>
+		    				@posts: <%= link_to 'posts',  myposts_path %></br>
 		 				<% end %>
 						@user:  <%= @user.name %>, </br>
 						@email: <%= @user.email %>

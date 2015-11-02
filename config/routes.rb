@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   match '/signup',        to: 'users#new',            via: 'get'
   match '/allusers',      to: 'users#index',          via: 'get'
   match '/feedlist',      to: 'users#feedlist',       via: 'get'
+  match '/myposts',       to: 'users#userposts',      via: 'get'
 
   match '/signin',        to: 'sessions#new',         via: 'get'
   match '/signout',       to: 'sessions#destroy',     via: 'delete'
