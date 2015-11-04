@@ -9,6 +9,11 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find_by_id(params[:id]) or not_found
+
+		respond_to do |format|
+			format.html
+			format.xml {render :xml => @post}
+		end
 	end
 
 	def create
@@ -44,7 +49,20 @@ class PostsController < ApplicationController
 
 	def index
 		@post = Post.paginate(:page => params[:page], :per_page => 5)
+		@post_xml = Post.where(:visibility => true, :security => 1)
+
+		respond_to do |format|
+			format.html
+			format.xml {render :xml => @post_xml}
+		end
 	end	
+
+	def rss
+		@post = Post.where(:visibility => true, :security => 1)		# Visible posts + for all
+		respond_to do |format|
+		   format.rss { render :layout => false }
+		end
+	end
 
 	def destroy
     	Post.find(params[:id]).destroy

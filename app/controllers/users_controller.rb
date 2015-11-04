@@ -2,8 +2,12 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
 
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) or not_found
   end
 
   def new
@@ -49,17 +53,15 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     redirect_to :back
-#    redirect_to users_url
   end
 
+private
   def signed_in_user
     unless signed_in?
       store_location
       redirect_to signin_url
     end
   end
-
-private
 
   def user_params
       params.require(:user).permit(:name, :email, :password,
