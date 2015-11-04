@@ -1,0 +1,25 @@
+<%= render 'layouts/header' %>
+
+<div class="row">
+	<div class="col s10 offset-s1">
+	<h3>My own posts</h3>
+		<table id="userposts">
+		    <thead>
+		          <tr>
+		              <th data-field="title">Title</th>
+	    			  <th data-field="edit">Edit</th>
+	    			  <th data-field="delete">Delete</th>		
+		          </tr>
+		    </thead>
+		    <tbody>
+		    	<% @post.each do |message| %>
+	          	<tr>
+		            <td><%= message.title %></td>
+		            <td><%= link_to "Edit", edit_post_path(message) %></td>
+    				<td><%= link_to "Delete", message, method: :delete, data: { confirm: "You sure?" } %></td>
+		        </tr>
+	        <% end %>
+		    <tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,15 @@
+I"ì(function() {
+  jQuery(function() {
+    return $('#users').dataTable();
+  });
+
+  jQuery(function() {
+    return $('#userposts').dataTable();
+  });
+
+  jQuery(function() {
+    return $('#feedback_user').dataTable();
+  });
+
+}).call(this);
+:ET
