@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+	require 'nokogiri'
+
 	def not_found
 		raise ActionController::RoutingError.new('Not Found')
 	end
@@ -7,12 +9,16 @@ class PostsController < ApplicationController
 		@post = Post.new()
 	end
 
+	def customxml
+		@posts = Post.where(:visibility => true, :security => 1)
+	end
+
 	def show
 		@post = Post.find_by_id(params[:id]) or not_found
 
 		respond_to do |format|
 			format.html
-			format.xml {render :xml => @post}
+			format.xml  {render :xml => @post}
 		end
 	end
 

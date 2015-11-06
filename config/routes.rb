@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   match '/allnews',       to: 'posts#index',          via: 'get' 
   match '/allposts',      to: 'posts#admin',          via: 'get' 
   match '/rss',           to: 'posts#rss',            via: 'get', :defaults => { :format => 'rss' }
+  match '/xml',           to: 'posts#customxml',      via: 'get', :defaults => { :format => 'xml' }
 
   match '/leavefeedback', to: 'feedbacks#new',        via: 'get' 
   match '/allfeedback',   to: 'feedbacks#index',      via: 'get'

@@ -36,6 +36,7 @@ gem 'bootstrap-will_paginate', '0.0.9'
 gem 'bcrypt-ruby', '3.1.2'
 
 gem 'faker', '1.1.2'
+gem 'nokogiri'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
