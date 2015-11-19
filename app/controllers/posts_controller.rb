@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.xml  {render :xml => @post}
+			format.json {render json: @post.as_json()}
 		end
 	end
 
@@ -68,6 +69,11 @@ class PostsController < ApplicationController
 		respond_to do |format|
 		   format.rss { render :layout => false }
 		end
+	end
+
+	def json
+		@post = Post.where(:visibility => true, :security => 1)		# Visible posts + for all
+		render json: @post
 	end
 
 	def destroy

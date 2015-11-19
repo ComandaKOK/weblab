@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 
 gem 'jquery-datatables-rails'
+
+gem 'active_model_serializers'
+
 gem 'feedjira'
 
 gem 'pg', '0.15.1'
