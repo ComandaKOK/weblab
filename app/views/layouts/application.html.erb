@@ -10,8 +10,10 @@
 </head>
 <body>
 
-<%= yield %>
-<%= render 'layouts/footer' %>
+<div data-pjax-container>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+</div>
 
 </body>
-</html> 
+</html>
