@@ -15,7 +15,7 @@
 		    				  <th data-field="security">Security</th>
 		    				  <th data-field="save">Save</th>
 		    				  <th data-field="edit">Edit</th>
-		    				  <th data-field="delete">Delete</th>		
+		    				  <th data-field="delete">Delete</th>
 	 					  <% end %>
 
 			          </tr>
@@ -33,16 +33,16 @@
 			         		<%= form_for(message) do |f| %>
 				            	<td>
 						                <%= f.select :visibility, [
-						                                          ["Show", true], 
+						                                          ["Show", true],
 						                                          ["Hide", false]
-						                                          ], {}, {class: "browser-default"} %>
+						                                          ], {}, {class: "browser-default", :onChange=>"javascript: this.form.commit.click();"} %>
 								</td>
 
 			            		<td>
-					                    <%= f.select :security,   [
-						                                          ["All", 1], 
+					                    <%= f.select :security, [
+						                                          ["All", 1],
 						                                          ["Users", 2]
-						                                          ], {}, {class: "browser-default"} %>
+						                                          ], {}, {class: "browser-default", :onChange=>"javascript: this.form.commit.click();"} %>
 			            		</td>
 
 			            		<td>
@@ -63,10 +63,6 @@
 <% else %>
 	<p>
 		<h3>You not authorised to be there!</h3>
-		<h4>Login first to see feedback!</h4> 
+		<h4>Login first to see feedback!</h4>
 	</p>
 <% end %>
-
-
-
-
