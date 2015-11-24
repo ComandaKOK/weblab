@@ -13,7 +13,7 @@
 			              <% if current_user.admin? %>
 				              <th data-field="visibility">Visibility</th>
 		    				  <th data-field="security">Security</th>
-		    				  <th data-field="security">Save</th>
+		    				  <th data-field="save">Save</th>
 		    				  <th data-field="edit">Edit</th>
 		    				  <th data-field="delete">Delete</th>		
 	 					  <% end %>
@@ -39,7 +39,7 @@
 								</td>
 
 			            		<td>
-					                    <%= f.select :security, [
+					                    <%= f.select :security,   [
 						                                          ["All", 1], 
 						                                          ["Users", 2]
 						                                          ], {}, {class: "browser-default"} %>
