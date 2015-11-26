@@ -1,0 +1,11 @@
+I"Î(function() {
+  jQuery(function() {
+    return $('#posts').dataTable();
+  });
+
+  $(document).on('click', '.autoupdate select', function() {
+    return $(this).parent('form').submit();
+  });
+
+}).call(this);
+:ET

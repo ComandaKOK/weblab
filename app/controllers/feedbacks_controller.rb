@@ -10,10 +10,16 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(feedback_params)
     @feedback.adminanswer = "No answer"
+
+    respond_to do |t|
+      t.html {redirect_to}
+      t.js
+    end
+
     if signed_in?
       @feedback.author = current_user.name
       @feedback.email  = current_user.email
-    end  
+    end
 
   	if @feedback.save
   		redirect_to allnews_path

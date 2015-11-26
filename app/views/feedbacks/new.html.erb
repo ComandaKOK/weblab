@@ -3,22 +3,22 @@
       <div class="row">
         <div class="col s8 offset-s2">
           <div class="card white">
-          <%= form_for(@feedback) do |f| %>
+          <%= form_for(@feedback, remote: true) do |f| %>
             <div class="card-content">
               <span class="card-title black-text">Leave feedback</span>
 
 			            <%= render 'layouts/errors_add_feedback' %>
                     <% if !signed_in? %>
-			                 <%= f.text_field :author,   class: "form-control", placeholder: "Author"%>                     
-			                 <%= f.text_field :email,    class: "form-control", placeholder: "email"%>  
-                    <% end %>                
-			            <%= f.text_area  :text, 	class: "form-control", placeholder: "Text"%>           
+			                 <%= f.text_field :author,   class: "form-control", placeholder: "Author"%>
+			                 <%= f.text_field :email,    class: "form-control", placeholder: "email"%>
+                    <% end %>
+			            <%= f.text_area  :text, 	class: "form-control", placeholder: "Text"%>
 
             </div>
             <div class="card-action">
               <%= f.submit "Feed", class: "btn btn-large purple lighten-2" %>
             </div>
-            			            
+
 		    <% end %>
           </div>
         </div>

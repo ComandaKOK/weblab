@@ -10,7 +10,7 @@
         <h4><% @error %></h4>
       <% end %>
 
-      <%= form_for(:session, url: sessions_path) do |f| %>
+      <%= form_for(:session, url: sessions_path, remote: true) do |f| %>
         <p>
           <%= f.label :email %>
           <%= f.text_field :email %>
@@ -21,7 +21,7 @@
           <%= f.password_field :password %>
         </p>
         <%= f.submit "Sign in", class: "btn btn-large purple lighten-2" %>
-      <% end %> 
+      <% end %>
       </div>
     </div>
   </div>

@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
 	def edit
     	@post = Post.find(params[:id])
-  	end  	
+  	end
 
   	def admin
     	@post = Post.all
@@ -62,7 +62,7 @@ class PostsController < ApplicationController
 			format.html
 			format.xml {render :xml => @post_xml}
 		end
-	end	
+	end
 
 	def rss
 		@post = Post.where(:visibility => true, :security => 1)		# Visible posts + for all

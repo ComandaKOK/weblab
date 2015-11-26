@@ -1,20 +1,6 @@
 <%= render 'layouts/header' %>
-
 <div class="row">
-  <div class="col s4">
-    <% @games.each do |item| %>
-      <ul class="collection">
-       <li class="collection-item avatar">
-          <%= image_tag item.image, class: "circle", width: "60px" %>
-          <span class="title">From: <em>Gametrailers.com</em></span>
-          <p>
-            <%= link_to item.title, item.url %>
-          </p>
-        </li>
-      </ul>
-    <% end %>
-  </div>
-  <div class="col s4">
+  <div class="col s6">
     <% @news.each do |item| %>
       <ul class="collection">
        <li class="collection-item avatar">
@@ -27,7 +13,7 @@
       </ul>
     <% end %>
   </div>
-  <div class="col s4">
+  <div class="col s6">
     <% @sience.each do |item| %>
       <ul class="collection">
        <li class="collection-item avatar">

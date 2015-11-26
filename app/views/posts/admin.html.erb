@@ -13,6 +13,7 @@
 			        <% if current_user.admin? %>
 				            <th data-field="visibility">Visibility</th>
 		    				    <th data-field="security">Security</th>
+										<th data-field="save"> Commit</th>
 		    				    <th data-field="edit">Edit</th>
 		    				    <th data-field="delete">Delete</th>
 	 					  <% end %>
@@ -29,20 +30,24 @@
 			            <td><%= time_ago_in_words(message.created_at)%> ago</td>
 
 			            <% if current_user.admin? %>
-			         		<%= form_for(message) do |f| %>
+			         		<%= form_for(message, remote: true) do |f| %>
 				            	<td>
 						                <%= f.select :visibility, [
 						                                          ["Show", true],
 						                                          ["Hide", false]
-						                                          ], {}, {class: "browser-default", :onChange=>"javascript: this.form.submit();"} %>
+						                                          ], {}, {class: "browser-default"} %>
 										  </td>
 
 			            		<td>
 					                    <%= f.select :security, [
 						                                          ["All", 1],
 						                                          ["Users", 2]
-						                                          ], {}, {class: "browser-default", :onChange=>"javascript: this.form.submit();"} %>
+						                                          ], {}, {class: "browser-default"} %>
 			            		</td>
+
+											<td>
+												<%= f.submit "Save" %>
+											</td>
 			            	<% end %>
 
 			            	<td><%= link_to "Edit", edit_post_path(message) %></td>
