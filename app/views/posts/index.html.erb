@@ -2,50 +2,45 @@
 <%= render 'layouts/header' %>
 
 <div class="row">
-<div class="col s8 offset-s2">
-
-<% @post.each do |record| %>
+  <div class="col s6 offset-s3">
+    <% @post.each do |record| %>
       <% if current_user != nil && current_user.admin? %>
         <% admin = true %>
-      <% else %>
+          <% else %>
         <% admin = false %>
       <% end %>
 
-      <% if record.visibility? || admin %>  <!-- Is there visibibility? -->
-        <% if record.security == 2 && !signed_in? %>                <!-- If I'am not signed user for locked post-->
+      <% if record.visibility? || admin %>
+        <!-- Is there visibibility? -->
+        <% if record.security == 2 && !signed_in? %>
+            <!-- If I'am not signed user for locked post-->
+            <div class="card">
+              <div class="card-content">
+                <p><h5>This post is only for users!</h5></p>
+              </div>
+              <div class="card-action">
+                <%= link_to "Sign up now!", signup_path %>
+              </div>
+            </div>
+        <% else %>     <!-- If I'am signed user or it's unlocked-->
           <div class="card">
             <div class="card-image">
-              <%= image_tag "locked.jpg",  size: "640x480" %>
+              <%= image_tag record.image,  class: "responsive-img" %>
+                <span class="card-title"><%= link_to record.title, record%></span>
             </div>
-
             <div class="card-content">
-              <p><span class="card-title black-text">This post is only for users!</span></p>
+              <em>Author:<%= record.author %></em>
             </div>
-                  
-           </div>
-        <% else %>                                                  <!-- If I'am signed user or it's unlocked-->
-
-          <div class="card">
-            <div class="card-image">
-              <%= image_tag record.image,  size: "640x480" %>
-            </div>
-
-            <div class="card-content">
-              <p><span class="card-title"><%= link_to record.title, record%></span></p>
-              <em>Author: <%= record.author %></em>
-            </div>
-                
             <div class="card-action">
               <%= link_to "More information", record %>
             </div>
           </div>
-
         <% end %>
       <% end %>
-<% end %>
+    <% end %>
+  </div>
+</div>
 
-</div>
-</div>
 <div class="row">
-    <%= will_paginate @post %>
+  <%= will_paginate @post %>
 </div>

@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 			format.html
 			format.xml  {render :xml => @post}
 			format.json {render json: @post.as_json()}
+			format.js
 		end
 	end
 

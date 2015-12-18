@@ -1,14 +1,17 @@
 <%= render 'layouts/header' %>
-
 <div class="row">
- <div class="col s6 offset-s3 ">
-    	<h4><%= @post.title %></h4>
-  			<p><%= image_tag @post.image, height: "auto", width: "640px" %></p>
-    		<p><%= @post.text %></p>
-
-				<small>
-					<em>Author: <%= @post.author %></em>
-				</small>
-
+  <div class="col s8 offset-s2">
+    <div class="card">
+    <div class="card-image">
+      <%= image_tag @post.image, class: "responsive-img"%>
+      <span class="card-title"><%= @post.title %></span>
+    </div>
+   <div class="card-content">
+     <p>
+       <small>
+         <em>Author: <%= @post.author %></em>
+       </small>
+     </p>
+     <p><%= @post.text %></p>
   </div>
 </div>

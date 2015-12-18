@@ -4,8 +4,8 @@
     	<%= link_to image_tag("nw.png", size: "64x64"), root_path %>
     </a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-       <li><%= link_to "Add news", addnews_path %></li>
-       <li><%= link_to "History", allnews_path %> </li>
+       <li><%= link_to "Add Article", addnews_path %></li>
+       <li><%= link_to "News", allnews_path %> </li>
        <li><%= link_to "Rules", rules_path %> </li>
 <% if signed_in? %>
         <li>
@@ -19,7 +19,7 @@
             <%= link_to "Sign in", signin_path %>
         </li>
 <% end %>
-       
+
       </ul>
     </div>
 </nav>
